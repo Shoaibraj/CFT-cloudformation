@@ -5,7 +5,7 @@ pipeline {
     stages {
         stage('git clone') {
             steps {
-                echo 'clone repositery consist of build packages'
+                checkout changelog: false, poll: false, scm: scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'githubToken', url: 'https://github.com/Shoaibraj/CFT-cloudformation.git']])
                 git branch: 'main', url: 'https://github.com/Shoaibraj/CFT-cloudformation.git'
                   }
              }
